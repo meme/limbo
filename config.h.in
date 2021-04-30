@@ -1,0 +1,14 @@
+/* Define to 1 to log all syscalls */
+#mesondefine ENABLE_STRACE
+
+/* Disable MIG typechecking */
+#define __MigTypeCheck 0
+
+static inline void __attribute__ ((noreturn))
+unimplemented(void)
+{
+	extern int puts(const char *);
+	extern void abort(void);
+	puts("not implemented");
+	abort();
+}
