@@ -5,6 +5,8 @@ project('limbo', 'c',
 )
 
 cc = meson.get_compiler('c')
+assert(cc.has_header('sys/prctl.h'), 'sys/prctl.h could not be found. Did you install the libc development package?')
+assert(cc.has_header_symbol('sys/prctl.h', 'PR_SET_SYSCALL_USER_DISPATCH'), 'PR_SET_SYSCALL_USER_DISPATCH is not defined. Make sure you are using Linux 5.11 or later.')
 
 config = configuration_data()
 
